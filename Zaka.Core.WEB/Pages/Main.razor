@@ -1,0 +1,161 @@
+@page "/main"
+@inject NavigationManager NavigationManager
+@using Microsoft.AspNetCore.WebUtilities
+@inject HttpClient http
+@using System.Net.Http.Json
+@using Zaka.Core.WEB.Models
+@inject Number number
+
+<PageTitle>Main</PageTitle>
+
+
+<body>
+
+  @if (isLoading)
+  {
+    <p>Loading........</p>
+  }
+  else
+  {
+  <div class="mypage">
+      <main>
+        @* <div class="advertise">
+        <p>
+          <span>NEW FEATURE!! </span> you can purchase electricity with ZAKA
+        </p>
+      </div> *@
+        <div class="main_container">
+          <div class="wallet">
+            <div class="wallet_heading">
+              <i class="fa-solid fa-wallet fa-beat-fade fa-xl"></i>
+              <p>My Wallet</p>
+            </div>
+            <div class="wallet_body">
+              <article>
+                Wallet Number : <span class="wrap text_Col"> @WalletNumber</span>
+              </article>
+
+              <article>
+                Available balance : <span class="wrap text_Col">@availableMoney</span>
+              </article>
+            </div>
+          </div>
+          <p class="question">I'D LIKE TO</p>
+          <div class="main_options">
+            <a href="#">
+              <figure>
+                <img
+                  src="https://static.thenounproject.com/png/2134394-200.png"
+                  alt="deposit"
+                  width="150"
+                  height="150"
+                />
+                <figcaption>Top Up</figcaption>
+              </figure>
+            </a>
+            <a href="#">
+              <figure>
+                <img
+                  src="https://static.thenounproject.com/png/2272167-200.png"
+                  alt="send money"
+                  width="150"
+                  height="150"
+                />
+                <figcaption>Send Money</figcaption>
+              </figure>
+            </a>
+            <a href="#">
+              <figure>
+                <img
+                  src="img/phone.png"
+                  alt="phone picture for airtime"
+                  width="150"
+                  height="150"
+                />
+                <figcaption>Buy Airtime</figcaption>
+              </figure>
+            </a>
+            <a href="#">
+              <figure>
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/018/874/633/original/light-bulb-icon-line-transparent-background-png.png"
+                  alt="electricity bulb picture"
+                  width="150"
+                  height="150"
+                />
+                <figcaption>Buy Electricity</figcaption>
+              </figure>
+            </a>
+          </div>
+        </div>
+      </main>
+  </div>
+  <p>@firstName</p>
+  <p>@availableMoney</p>
+<p>@tmessage</p>
+  }
+
+
+</body>
+
+@code {
+  //public string theNum = "+27792684037";
+  private string tmessage = "";
+    public int AccountId;
+    public string? AccountGuid;
+    public int AccountTypeId;
+    public AccountType? AccountType;
+    public string? firstName;
+    public string? lastName;
+    public string? Username;
+    public string? CellphoneNumber;
+    public string? SecretKey;
+    public bool AccountVerified;
+    public DateTime CreatedDate;
+    decimal availableMoney;
+    int? walletId;
+    string? WalletNumber;
+  bool isLoading = true;
+
+  ApiResponse accounts = new();
+
+  protected override async Task OnInitializedAsync()
+  {
+
+    try
+    {
+
+      accounts = await http.GetFromJsonAsync<ApiResponse>($"api/account/{number.Numbers}");
+
+      if (accounts != null)
+      {
+        walletId = accounts.Data.WalletId;
+        WalletNumber = accounts.Data.WalletNumber;
+        AccountId = accounts.Data.Account.AccountId;
+        firstName = accounts.Data.Account.firstName;
+        availableMoney = accounts.Data.availableMoney;
+        lastName = accounts.Data.Account.lastName;
+        AccountGuid = accounts.Data.Account.AccountGuid;
+        AccountTypeId = accounts.Data.Account.AccountTypeId;
+        AccountType = accounts.Data.Account.AccountType;
+        Username = accounts.Data.Account.Username;
+        CellphoneNumber = accounts.Data.Account.CellphoneNumber;
+        SecretKey = accounts.Data.Account.SecretKey;
+        CreatedDate = accounts.Data.Account.CreatedDate;
+        AccountVerified = accounts.Data.Account.AccountVerified;
+
+      }
+    }
+    catch (System.Exception ex)
+    {
+      tmessage = ex.Message.ToString();
+    }
+    finally
+    {
+      isLoading = false;
+    }
+
+  }
+
+
+}

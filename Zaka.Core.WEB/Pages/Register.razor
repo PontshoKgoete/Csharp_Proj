@@ -1,0 +1,72 @@
+﻿@page "/register"
+@inject HttpClient http
+@using System.Net.Http.Json
+@inject NavigationManager NavigationManager
+@using Zaka.Core.WEB.Models
+@layout CustomLayout
+@inject Number num
+
+<PageTitle>Register</PageTitle>
+
+<div class="page">
+    <section class="logo">
+      <figure>
+        <img src="img/zaka.png" alt="logo" width="350" height="300" />
+      </figure>
+    </section>
+    <section class="onboard_form" >
+      <form onsubmit="@CreateAcc">
+        <label for="">Account Type</label>
+        <select list="Types" name="Types" @bind="newAcc.AccountTypeId">
+          <option value="1">Individual</option>
+          <option value="2">Business</option>
+        </select>
+        <label for="">First Name</label>
+        <input type="text" @bind="newAcc.FirstName"/>
+        <label for="">Last Name</label>
+        <input type="text" @bind="newAcc.LastName"/>
+        <label for="">Username</label>
+        <input type="text" @bind="newAcc.Username" />
+        <label for="">CellPhone Number</label>
+        <input type="text" @bind="newAcc.CellphoneNumber"/>
+        <label for="">password</label>
+        <input type="text" @bind="newAcc.SecretKey"/>
+
+        <button type="submit">Finish</button>
+      </form>
+    </section>
+    <p class="TandCs"><a href="#">Terms & conditions</a></p>
+</div>
+
+@if(validate)
+{
+    _=Task.Run(async() => {
+    await Task.Delay(3000); //1 sec.
+    NavigationManager.NavigateTo($"/");
+  });
+   
+}
+<p>@responseMessage</p>
+
+@code {
+    
+    public CreateAccountDto newAcc = new CreateAccountDto();
+    private string responseMessage = "";
+    bool validate = false;
+    private async Task CreateAcc(){
+
+        var response = await http.PostAsJsonAsync<CreateAccountDto>("api/account/", newAcc);
+
+        if (response.IsSuccessStatusCode){
+
+             validate = true;
+            string responseBody = response.StatusCode.ToString() + " "+ response.ReasonPhrase ;
+            responseMessage = "Response: " + responseBody;
+        }else
+        {
+            
+           
+            responseMessage = "Error: " + response.ReasonPhrase;
+        }
+    }
+}

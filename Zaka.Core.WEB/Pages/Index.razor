@@ -1,0 +1,106 @@
+﻿@page "/"
+@inject HttpClient http
+@using System.Net.Http.Json
+@inject NavigationManager NavigationManager
+@using Zaka.Core.WEB.Models
+@layout CustomLayout
+@inject LocalStorageService LocalStorage
+@inject Number number
+
+<div class="page">
+      <header>
+      <nav>
+        <img src="img/zaka.png" alt="logo" height="200" width="250" />
+      </nav>
+    </header>
+    <main>
+      <p>WELCOME TO MONEY MOBILE</p>
+
+      <form class="form_cont" onsubmit="@NewLogin">
+        <label for="phonenumber">CELLPHONE NUMBER </label>
+        <input type="text" @bind="phoneNum" />
+        <label for="phonenumber">PASSWORD </label>
+        <input type="password" @bind="passW" />
+
+        <button type="submit">LOGIN</button>
+        <button onclick="@reg">REGISTER</button>
+      </form>
+    </main>
+    <p>@message1</p>
+    <p>@number.Numbers</p>
+    <p>@responseMessage</p>
+</div>
+@if(validate)
+{
+    _=Task.Run(async() => {
+    await Task.Delay(3000); //1 sec.
+    NavigationManager.NavigateTo($"/main");
+  });
+   
+}
+
+
+@code{
+
+    private string phoneNum;
+    private string passW ;
+    private string responseMessage = "";
+    private bool validate = false;
+    string message1="";
+    LoginResponse logRespond = new LoginResponse();
+    
+    private async Task NewLogin()
+    {
+      if (phoneNum != null & passW != null)
+      {
+        message1 = "variables loaded";
+          var login = new LoginDto
+          {
+            PhoneNumber= phoneNum,
+            SecretKey = passW
+          }; 
+          number.Numbers = phoneNum;
+          
+          
+          
+          var response = await http.PostAsJsonAsync<LoginDto>("api/account/login",login);
+          if (response.IsSuccessStatusCode)
+          {
+              validate = true;
+
+              // Retrieve the response content
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            // Deserialize the response content to a LoginResponse object
+            var loginResponse = JsonSerializer.Deserialize<LoginResponse>(responseContent);
+
+            // Access the accessToken from the loginResponse
+            accessToken = loginResponse.AccessToken;
+
+            // Store the accessToken in local storage
+            await LocalStorage.SetItem("accessToken", accessToken);
+                        
+              string responseBody = response.StatusCode.ToString() + " "+ response.ReasonPhrase + " "+ response.RequestMessage;
+              responseMessage = "Response: " + responseBody;
+          }
+          else
+          {
+            
+              responseMessage = "Error: " + response.ReasonPhrase;
+          }
+        }
+        else
+        {
+          message1 = "Empty variables";
+        }
+    }
+    private void reg()
+    {
+      NavigationManager.NavigateTo($"/genotp");
+    }
+    private void NextP()
+    {
+      
+      NavigationManager.NavigateTo($"/main");
+    }
+}

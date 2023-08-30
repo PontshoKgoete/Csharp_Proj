@@ -1,0 +1,44 @@
+@page "/transact"
+@inject HttpClient Http
+@using System.Net.Http.Json
+@inject NavigationManager NavigationManager
+@using Zaka.Core.WEB.Models
+
+<div class="page">
+
+        <h1>Transact</h1>
+
+    <main>
+      <div class="box">
+        <p>Send to a person with ZAKA App</p>
+        <button onclick="@NextP">></button>
+      </div>
+      <div class="box">
+        <p>Send to a person without Zaka App</p>
+        <button>></button>
+      </div>
+      <div class="box">
+        <p>Manage Money (voucher)</p>
+        <button>></button>
+      </div>
+      <div class="box">
+        <p>Track Money</p>
+        <button>></button>
+      </div>
+      <div class="box">
+        <p>Top up</p>
+        <button onclick="@NextP2">></button>
+      </div>
+    </main>
+</div>
+
+@code{
+   private void NextP()
+    {
+      NavigationManager.NavigateTo($"/sendmoney");
+    }
+    private void NextP2()
+    {
+      NavigationManager.NavigateTo($"/topup");
+    }
+}

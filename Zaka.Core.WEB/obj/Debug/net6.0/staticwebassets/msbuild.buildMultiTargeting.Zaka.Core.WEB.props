@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Zaka.Core.WEB.props" />
+</Project>

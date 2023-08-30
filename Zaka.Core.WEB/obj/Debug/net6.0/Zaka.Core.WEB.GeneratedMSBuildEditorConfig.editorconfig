@@ -1,0 +1,77 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Zaka.Core.WEB
+build_property.RootNamespace = Zaka.Core.WEB
+build_property.ProjectDir = C:\Users\pkgoe\OneDrive\Desktop\Zaka.Core.API\ZAKA.Core.WEB\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\pkgoe\OneDrive\Desktop\Zaka.Core.API\ZAKA.Core.WEB
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/GenerateOtp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VuZXJhdGVPdHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/Validate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmFsaWRhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Shared/TopNav.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRvcE5hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-v1947iz7i0
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/Main.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-xkfneqak7p
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/SendMoney.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VuZE1vbmV5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-bu8mpx0z7k
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/TopUp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG9wVXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-o4qp5xdvs5
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Pages/Transact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-1p8b9tp91c
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Shared/CustomLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEN1c3RvbUxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-4eyze1jwrs
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-fspvse2n7n
+
+[C:/Users/pkgoe/OneDrive/Desktop/Zaka.Core.API/ZAKA.Core.WEB/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-a3oidxfu2h

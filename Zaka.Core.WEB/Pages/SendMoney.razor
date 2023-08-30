@@ -1,0 +1,54 @@
+@page "/sendmoney"
+@inject HttpClient Http
+@using System.Net.Http.Json
+@inject NavigationManager NavigationManager
+@using Zaka.Core.WEB.Models
+
+<div class="page">
+      <main>
+    <div class="main_container">
+      <div class="wallet">
+        <div class="wallet_heading">
+          <i class="fa-solid fa-wallet fa-beat-fade fa-xl"></i>
+          <p>My Wallet</p>
+        </div>
+        <div class="wallet_body">
+          <article>
+            Wallet Number : <span class="wrap text_Col">454454654546</span>
+          </article>
+
+          <article>
+            Available balance : <span class="wrap text_Col">R0</span>
+          </article>
+        </div>
+      </div>
+
+      <section class="form_sec">
+        <form class="form">
+          <label for="cellphone number">Cellphone Number</label>
+          <input type="text" required />
+          <label for="amount">amount</label>
+          <input type="text" required />
+          <textarea
+            name=""
+            id=""
+            cols="75"
+            rows="10"
+            placeholder="Add Text"
+          ></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </div>
+  </main>
+</div>
+
+@code{
+
+  SendMoney sendmoney = new SendMoney();
+
+  private async Task SMoney()
+  {
+    var response = await Http.PostAsJsonAsync<SendMoney>("api/account/send-money",sendmoney);
+  }
+}

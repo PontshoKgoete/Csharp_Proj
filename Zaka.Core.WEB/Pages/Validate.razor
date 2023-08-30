@@ -1,0 +1,60 @@
+﻿@page "/validate"
+@inject HttpClient Http
+@using System.Net.Http.Json
+@inject NavigationManager NavigationManager
+@using Zaka.Core.WEB.Models
+@layout CustomLayout
+
+<PageTitle>ValidateOtp</PageTitle>
+
+<div class="page">
+    <section class="logo">
+      <figure>
+        <img src="img/zaka.png" alt="logo" width="350" height="300" />
+      </figure>
+    </section>
+    <section class="otp_Form">
+      <form onsubmit="@OtpValidate">
+        <label for="">CellPhone Number</label>
+        <input type="text" @bind="@theOtp.PhoneNumber"/>
+        <label for="">OTP</label>
+        <input type="number" @bind="@theOtp.Otp"/>
+        <button type="submit">NEXT</button>
+      </form>
+    </section>
+    <p class="TandCs"><a href="#">Terms & conditions</a></p>
+</div>
+
+
+@if(validate)
+{
+    _=Task.Run(async() => {
+    await Task.Delay(3000); //1 sec.
+    NavigationManager.NavigateTo($"/register");
+  });
+   
+}
+<p>@responseMessage</p>
+
+@code{
+
+  private ValidateOtp theOtp = new ValidateOtp();
+  private string responseMessage = "";
+  bool validate = false;
+  private async Task OtpValidate(){
+        
+    var response = await Http.PostAsJsonAsync<ValidateOtp>("api/account/validate-otp",theOtp);
+      if (response.IsSuccessStatusCode)
+      {
+        validate = true;
+           
+        string responseBody = response.StatusCode.ToString() + " "+ response.ReasonPhrase + " "+ response.RequestMessage;
+        responseMessage = "Response: " + responseBody;
+      }
+      else
+      {
+        responseMessage = "Error: " + response.ReasonPhrase;
+      }
+  }
+
+}

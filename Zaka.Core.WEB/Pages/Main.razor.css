@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mypage {
+  background-color: white;
+}
+
+.wrap {
+  flex-wrap: nowrap;
+}
+.main_container {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+}
+.advertise {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 75px;
+  background-color: blue;
+  text-align: center;
+  font-size: 2rem;
+}
+.wallet {
+  border: 2px solid black;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 80%;
+}
+.wallet_heading {
+  text-align: center;
+  font-weight: bolder;
+  border-bottom: 1px dashed black;
+}
+.wallet_body {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
+}
+.text_Col {
+  color: blue;
+}
+.main_options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.main_options a {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  border: 1px double rgba(0, 0, 0, 0.363);
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main_options img {
+  width: 100%;
+  height: 7rem;
+}
+
+.main_options a:hover,
+.main_options a:focus {
+  background-color: gray;
+}
+
+.form_sec {
+  margin-top: 2rem;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+.form {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 4px 4px 4px 4px rgb(0, 0, 0);
+  padding: 0.5rem;
+}
+.form input {
+  width: 75%;
+  height: 2rem;
+  background-color: transparent;
+  border: 1px solid gray;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.form label {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.form button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 60%;
+  height: 2rem;
+  background-color: transparent;
+  color: black;
+  font-size: 1.3rem;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.form button:focus,
+.form button:hover {
+  background-color: blue;
+}

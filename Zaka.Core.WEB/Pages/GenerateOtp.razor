@@ -1,0 +1,62 @@
+@page "/genotp"
+@inject HttpClient Http
+@using System.Net.Http.Json
+@inject NavigationManager NavigationManager
+@using Zaka.Core.WEB.Models
+@layout CustomLayout
+
+<PageTitle>EnterOtp</PageTitle>
+
+<div class="page" >
+        <section class="logo">
+      <figure>
+        <img src="img/zaka.png" alt="logo" width="350" height="300" />
+      </figure>
+    </section>
+    <section class="otp_Form">
+      <form onsubmit="@OtpGenerator">
+        <label for="">CELLPHONE NUMBER</label>
+        <input @bind="generate.PhoneNumber" />
+        <button type="submit">NEXT</button>
+      </form>
+    </section>
+    <p class="TandCs"><a href="#">Terms & conditions</a></p>
+</div>
+
+@if(validate)
+{
+    _=Task.Run(async() => {
+    await Task.Delay(3000); //1 sec.
+    NavigationManager.NavigateTo($"/validate");
+  });
+   
+}
+<p>@responseMessage</p>
+
+@code{
+
+    private GenerateOtpDto generate = new GenerateOtpDto();
+    private string responseMessage = "";
+    bool validate = false;
+
+    private async Task OtpGenerator()
+    {
+        
+      var response = await Http.PostAsJsonAsync<GenerateOtpDto>("api/account/generate-otp",generate);
+        if (response.IsSuccessStatusCode)
+        {
+          validate = true;
+          
+          string responseBody = response.StatusCode.ToString() + " "+ response.ReasonPhrase + " "+ response.RequestMessage;
+          responseMessage = "Response: " + responseBody;
+        }
+        else
+        {
+            
+          responseMessage = "Error: " + response.ReasonPhrase;
+        }
+    }
+
+
+}
+
