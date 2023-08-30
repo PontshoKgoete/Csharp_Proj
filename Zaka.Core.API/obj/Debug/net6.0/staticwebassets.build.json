@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "C1XzuFrDeKkYqQoGH9Ir+lPLhtJafXCBT2oq2PwXqOk=",
+  "Source": "Zaka.Core.API",
+  "BasePath": "_content/Zaka.Core.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

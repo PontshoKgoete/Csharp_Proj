@@ -1,0 +1,15 @@
+--DIFFERENT CLASS LIBRARY
+dotnet ef migrations add "Initial migration" --project ../Zaka.Core.Infrastructure/ -o Persistence/Migrations
+
+--SAME CLASS LIBRARY DIFFERENT OUTPUT FOLDER
+dotnet ef migrations add "Seed AccountType data" -o ./Persistence/Migrations
+
+
+
+--ENVIRONMENT
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-6.0
+
+set ASPNETCORE_ENVIRONMENT=Development
+
+--LINUX
+export ASPNETCORE_ENVIRONMENT=Development
